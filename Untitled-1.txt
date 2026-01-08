@@ -1,0 +1,27 @@
+// Example: Fetching JSON data from a server using AJAX (Fetch API)
+
+// URL of a sample API that returns JSON data
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+// Make an AJAX request using Fetch API
+fetch(apiUrl)
+  .then(response => {
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // Parse the response body as JSON
+    return response.json();
+  })
+  .then(data => {
+    // 'data' is a JavaScript object parsed from JSON
+    console.log('Received JSON data:', data);
+
+    // Example: Accessing properties from the JSON object
+    console.log('Post title:', data.title);
+    console.log('Post body:', data.body);
+  })
+  .catch(error => {
+    // Handle any errors during the fetch or parsing
+    console.error('Fetch error:', error);
+  });
